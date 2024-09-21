@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hoteliq/pages/widget/tab_home.dart';
+import 'package:hoteliq/pages/widget/tabbar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -12,269 +14,126 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: colors,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(10, 50, 10, 5),
-            child: Text(
-              "Current location",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 15,
-                  fontWeight: FontWeight.normal),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 50),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          Icons.abc,
-                          size: 30,
-                        ),
-                        Text(
-                          "Wallace, Australia",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Icon(Icons.blender_outlined)
-                  ],
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Near Location",
+      body: SafeArea(
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                child: Text(
+                  "Current location",
+                  textAlign: TextAlign.left,
                   style: TextStyle(
-                      // color: Colors.grey,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "See all",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  height: 200,
-                  width: 500,
-                  child: Image.asset(
-                    'assets/hotelaston.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "The Aston Vill Hotel",
-                          style: TextStyle(
-                              // color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          Icons.star,
-                          size: 25,
-                        ),
-                        Text(
-                          "5.0",
-                          style: TextStyle(
-                              // color: Colors.grey,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          // SizedBox(
-          //   height: 10,
-          // ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              "Alice Springs NT 0870, Australia",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 15,
-                // fontWeight: FontWeight.bold
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "\$200.7",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "/night",
-                  style: TextStyle(
-                      // color: Colors.grey,
+                      color: Colors.grey,
                       fontSize: 15,
                       fontWeight: FontWeight.normal),
                 ),
-              ],
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Popular Hotel",
-                  style: TextStyle(
-                      // color: Colors.grey,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "See all",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.pin_drop,
+                            size: 30,
+                            color: Colors.blue,
+                          ),
+                          Text(
+                            "Wallace, Australia",
+                            style: TextStyle(
+                                // color: Colors.grey,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Icon(Icons.notifications)
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: Row(
-              children: [
-                Container(
-                  width: 85,
-                  height: 85,
-                  decoration: BoxDecoration(
-                      // color: buttonColor,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Image.asset(
-                    'assets/hotelaston.png',
-                    fit: BoxFit.fill,
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: SizedBox(
+                    height: 1000,
+                    child: Tabbar(),
                   ),
                 ),
-                SizedBox(
-                  width: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "The Aston Vill Hotel",
-                                  style: TextStyle(
-                                      // color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        
-                        Text(
-                          "Alice Springs NT 0870, Australia",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 15,
-                            // fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "\$200.7",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "/night",
-                          style: TextStyle(
-                              // color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        elevation: 1,
+        height: 40,
+        color: Colors.grey.shade100,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 10,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Transform.translate(
+              offset: Offset(0, -20),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.home_filled,
+                    size: 25,
+                    color: Colors.grey.shade400,
+                  )),
+            ),
+            Transform.translate(
+              offset: Offset(0, -20),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.calendar_month,
+                    size: 25,
+                    color: Colors.grey.shade400,
+                  )),
+            ),
+            Transform.translate(
+              offset: Offset(0, -20),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.save_rounded,
+                    size: 25,
+                    color: Colors.grey.shade400,
+                  )),
+            ),
+            Transform.translate(
+              offset: Offset(0, -20),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.person,
+                    size: 25,
+                    color: Colors.grey.shade400,
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
