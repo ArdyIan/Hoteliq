@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hoteliq/pages/schedule_page.dart';
 import 'package:hoteliq/pages/widget/tab_home.dart';
 import 'package:hoteliq/pages/widget/tabbar.dart';
 
@@ -67,16 +68,17 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
+//memangggil tabbar
             Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: SizedBox(
-                    height: 1000,
-                    child: Tabbar(),
-                  ),
+              //child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: SizedBox(
+                  height: 600,
+                  child: Tabbar(),
                 ),
               ),
+              //  ),
             ),
           ],
         ),
@@ -84,7 +86,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomAppBar(
         elevation: 1,
         height: 40,
-        color: Colors.grey.shade100,
+        color: Colors.grey.shade300,
+        padding: EdgeInsets.only(bottom: 10),
         shape: CircularNotchedRectangle(),
         notchMargin: 10,
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -92,45 +95,58 @@ class _HomePageState extends State<HomePage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Transform.translate(
-              offset: Offset(0, -20),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.home_filled,
-                    size: 25,
-                    color: Colors.grey.shade400,
-                  )),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.calendar_month,
+                size: 20,
+                color: Colors.grey.shade400,
+              ),
             ),
-            Transform.translate(
-              offset: Offset(0, -20),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.calendar_month,
-                    size: 25,
-                    color: Colors.grey.shade400,
-                  )),
+            // Transform.translate(
+            //   offset: Offset(0, -20),
+            //   child: IconButton(
+            //       onPressed: () {},
+            //       icon: Icon(
+            //         Icons.home_filled,
+            //         size: 30,
+            //         color: Colors.grey.shade400,
+            //       )),
+            // ),
+
+            // Transform.translate(
+            //   offset: Offset(0, -20),
+            //   child:
+            IconButton(
+              onPressed: () {
+                print("Icon Calendar Pressed");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SchedulePage()));
+              },
+              icon: Icon(
+                Icons.calendar_month,
+                size: 20,
+                color: Colors.grey.shade400,
+              ),
             ),
-            Transform.translate(
-              offset: Offset(0, -20),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.save_rounded,
-                    size: 25,
-                    color: Colors.grey.shade400,
-                  )),
+
+            // SizedBox(height: 20,),
+            // ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.calendar_month,
+                size: 20,
+                color: Colors.grey.shade400,
+              ),
             ),
-            Transform.translate(
-              offset: Offset(0, -20),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.person,
-                    size: 25,
-                    color: Colors.grey.shade400,
-                  )),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.calendar_month,
+                size: 20,
+                color: Colors.grey.shade400,
+              ),
             ),
           ],
         ),

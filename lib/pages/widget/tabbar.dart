@@ -50,15 +50,6 @@ class _CustomTabbarState extends State<Tabbar> {
                         setState(() {
                           current = index;
                         });
-                        // Visibility(
-                        //     // visible: current == index,
-                        //     child: Container(
-                        //   width: 5,
-                        //   height: 5,
-                        //   decoration: BoxDecoration(
-                        //       shape: BoxShape.circle,
-                        //       color: Colors.deepPurpleAccent),
-                        // ));
                       },
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
