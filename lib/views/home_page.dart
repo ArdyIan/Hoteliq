@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hoteliq/views/schedule_page.dart';
-import 'package:hoteliq/views/scroll_hotel.dart';
 import 'package:hoteliq/widgets/tab_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -133,10 +132,7 @@ class _HomePageState extends State<HomePage> {
             // SizedBox(height: 20,),
             // ),
             IconButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ScrollHotel()));
-              },
+              onPressed: () {},
               icon: Icon(
                 Icons.alarm,
                 size: 20,
