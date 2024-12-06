@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hoteliq/pages/home_page.dart';
+import 'package:hoteliq/views/home_page.dart';
 import 'package:readmore/readmore.dart';
 
-class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
+class DetailPage extends StatelessWidget {
+  DetailPage({super.key});
 
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  String text =
+  final String text =
       'Hanya 5 menit berjalan kaki dari stasiun kereta api Purwosari, hotel yang elegan ini berjarak 3 km dari Monumen Pers Nasional dan 4 km dari Museum Keraton Surakarta. Kamar luas dengan dekor modern dilengkapi dengan Wi-Fi gratis, TV layar datar, minibar, brankas, serta fasilitas untuk membuat teh dan kopi. Kamar di kelas yang lebih tinggi memiliki kamar tidur ekstra, sedangkan suite dilengkapi dapur kecil.';
 
   @override
@@ -19,13 +14,14 @@ class _DetailPageState extends State<DetailPage> {
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-              },
-              icon: Icon(Icons.arrow_back)),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
           title: Text(
             'Detail',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -60,64 +56,19 @@ class _DetailPageState extends State<DetailPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(3),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.black, width: 2),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Icon(
-                                    Icons.wifi,
-                                    size: 15,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Text(
-                                  'Free Wifi',
-                                  style: TextStyle(fontSize: 12),
-                                )
-                              ],
-                            ),
+                          _buildFeatureItem(
+                            icon: Icons.wifi,
+                            label: 'Free Wifi',
+                            iconColor: Colors.black,
                           ),
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.coffee),
-                                SizedBox(width: 10),
-                                Text('Free Breakfast'),
-                              ],
-                            ),
+                          _buildFeatureItem(
+                            icon: Icons.coffee,
+                            label: 'Free Breakfast',
                           ),
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.star_rounded,
-                                  color: Colors.orange,
-                                ),
-                                SizedBox(width: 10),
-                                Text('5.0'),
-                              ],
-                            ),
+                          _buildFeatureItem(
+                            icon: Icons.star_rounded,
+                            label: '5.0',
+                            iconColor: Colors.orange,
                           ),
                         ],
                       ),
@@ -217,8 +168,9 @@ class _DetailPageState extends State<DetailPage> {
                     SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ClipRRect(
+                      children: List.generate(
+                        3,
+                        (index) => ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Container(
                             height: 80,
@@ -229,36 +181,13 @@ class _DetailPageState extends State<DetailPage> {
                             ),
                           ),
                         ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            height: 80,
-                            width: 120,
-                            child: Image.asset(
-                              'assets/hotelaston.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            height: 80,
-                            width: 120,
-                            child: Image.asset(
-                              'assets/hotelaston.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                     SizedBox(height: 20),
                   ],
                 ),
               ),
             ),
-            // Container untuk Booking Now di bagian bawah layar
             Container(
               height: 55,
               width: 320,
@@ -279,6 +208,30 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildFeatureItem({
+    required IconData icon,
+    required String label,
+    Color iconColor = Colors.black,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, size: 15, color: iconColor),
+          SizedBox(width: 10),
+          Text(
+            label,
+            style: TextStyle(fontSize: 12),
+          ),
+        ],
       ),
     );
   }

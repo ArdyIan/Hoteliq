@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hoteliq/pages/schedule_page.dart';
-import 'package:hoteliq/pages/widget/tab_home.dart';
-import 'package:hoteliq/pages/widget/tabbar.dart';
+import 'package:hoteliq/views/schedule_page.dart';
+import 'package:hoteliq/views/scroll_hotel.dart';
+import 'package:hoteliq/widgets/tab_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.calendar_month,
+                Icons.home,
                 size: 20,
                 color: Colors.grey.shade400,
               ),
@@ -133,9 +133,12 @@ class _HomePageState extends State<HomePage> {
             // SizedBox(height: 20,),
             // ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ScrollHotel()));
+              },
               icon: Icon(
-                Icons.calendar_month,
+                Icons.alarm,
                 size: 20,
                 color: Colors.grey.shade400,
               ),
@@ -143,7 +146,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.calendar_month,
+                Icons.settings,
                 size: 20,
                 color: Colors.grey.shade400,
               ),

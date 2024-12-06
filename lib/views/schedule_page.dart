@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hoteliq/pages/home_page.dart';
-import 'package:hoteliq/pages/myHotel_page.dart';
+
+import 'package:hoteliq/views/home_page.dart';
+import 'package:hoteliq/views/myHotel_page.dart';
 import 'package:intl/intl.dart'; // Pastikan import intl sudah benar
 import 'package:table_calendar/table_calendar.dart';
 
@@ -24,7 +25,6 @@ class _SchedulePageState extends State<SchedulePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Pastikan format date di sini sesuai dengan yang diharapkan
     String formattedDate = DateFormat('yyyy-MM-dd').format(today);
 
     return SafeArea(
@@ -47,7 +47,7 @@ class _SchedulePageState extends State<SchedulePage> {
         ),
         body: Column(
           children: [
-            Text("Selected day = $formattedDate"),
+            // Text("Selected day = $formattedDate"),
             Container(
               child: TableCalendar(
                 locale: "en_US",
@@ -89,10 +89,21 @@ class _SchedulePageState extends State<SchedulePage> {
                 ],
               ),
             ),
+//navigate to hotel booking schedule
             GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyhotelPage(formattedDate: formattedDate,)));
+              onTap: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MyhotelPage(formattedDate: formattedDate),
+                  ),
+                );
+                if (result != null && result is String) {
+                  setState(() {
+                    formattedDate = result;
+                  });
+                }
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -174,7 +185,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         )
                       ],
                     ),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.forward)),
+                    // IconButton(onPressed: () {}, icon: Icon(Icons.forward)),
                   ],
                 ),
               ),
@@ -182,88 +193,104 @@ class _SchedulePageState extends State<SchedulePage> {
             SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 85,
-                        height: 85,
-                        decoration: BoxDecoration(
-                            // color: buttonColor,
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Image.asset(
-                          'assets/hotelaston.png',
-                          fit: BoxFit.fill,
+            GestureDetector(
+              onTap: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MyhotelPage(formattedDate: formattedDate),
+                  ),
+                );
+                if (result != null && result is String) {
+                  setState(() {
+                    formattedDate = result;
+                  });
+                }
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 85,
+                          height: 85,
+                          decoration: BoxDecoration(
+                              // color: buttonColor,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Image.asset(
+                            'assets/hotelaston.png',
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              //disininiiiiiiii
-                              Row(
-                                // mainAxisAlignment: MainAxisAlignment
-                                //     .spaceBetween, // Mendorong elemen ke kiri dan kanan
-                                children: [
-                                  // Nama hotel di sebelah kiri
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                //disininiiiiiiii
+                                Row(
+                                  // mainAxisAlignment: MainAxisAlignment
+                                  //     .spaceBetween, // Mendorong elemen ke kiri dan kanan
+                                  children: [
+                                    // Nama hotel di sebelah kiri
 
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: Text(
-                                      "The Aston Vill Hotel",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 20),
+                                      child: Text(
+                                        "The Aston Vill Hotel",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_month,
-                                size: 15,
-                              ),
-                              Text("$formattedDate"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\$165.3",
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "/night",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                            ],
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.forward)),
-                ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.calendar_month,
+                                  size: 15,
+                                ),
+                                Text("$formattedDate"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "\$165.3",
+                                  style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "/night",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    // IconButton(onPressed: () {}, icon: Icon(Icons.forward)),
+                  ],
+                ),
               ),
             ),
           ],

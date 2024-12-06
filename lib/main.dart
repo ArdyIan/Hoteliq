@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hoteliq/pages/home_page.dart';
+import 'package:hoteliq/views/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       // routes: {
       //   '/homepage' : (context) => HomePage(),
       // },
-      home : HomePage(),
+      home: HomePage(),
     );
   }
 }
